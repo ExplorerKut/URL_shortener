@@ -13,9 +13,11 @@
                 </form>
             </div>
             <div class="child2">
+            
             {% if short_url %}
+            <h3>Your Url is shortened, click on the link to redirect.</h3>
             <hr>
-            <span>{{short_url}}</span>
+            <span><a href="{{short_url}}">{{short_url}}</a></span>
             {% endif%}   
             </div>
         </div>
