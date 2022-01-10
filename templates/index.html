@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>url shortener</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    </head>
+    <body>
+        <div class="main-body">
+            <div class="child">
+                <form class="url-details" method="POST">
+                    <label for="original_url">Enter url</label>
+                    <input type="text" name="org_url" id="original_url" value="{{request.form['url']}}"><br>
+                    <input type="submit">
+                </form>
+            </div>
+            <div class="child2">
+            {% if short_url %}
+            <hr>
+            <span>{{short_url}}</span>
+            {% endif%}   
+            </div>
+        </div>
+         
+    </body>
+</html>
