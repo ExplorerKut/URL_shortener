@@ -2,12 +2,12 @@ from flask import Flask,render_template,request,flash,redirect,url_for
 import sqlite3
 from hashids import Hashids
 from flask_sqlalchemy import SQLAlchemy
-
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY']='my secret key123'
 hashids= Hashids(min_length=4, salt=app.config['SECRET_KEY'])
-app.config['SQLALCHEMY_DATABASE_URI']='postgresql://budomjszekyhpb:df01c34a0fb28e347b4494a3b037f4128cc7099d11845cf7148698c33017c697@ec2-3-225-41-234.compute-1.amazonaws.com:5432/d2tgpq4gdhmn9m'
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('db_URI')
 db=SQLAlchemy(app)
 
 class Urls(db.Model):
@@ -21,7 +21,7 @@ class Urls(db.Model):
 @app.route('/',methods=('GET','POST'))
 def index():
 
-
+    print(os.environ.get('db_URI'))
     if request.method=='POST':
         url=request.form['org_url']
         
