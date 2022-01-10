@@ -20,8 +20,6 @@ class Urls(db.Model):
 
 @app.route('/',methods=('GET','POST'))
 def index():
-
-    print(os.environ.get('db_URI'))
     if request.method=='POST':
         url=request.form['org_url']
         
