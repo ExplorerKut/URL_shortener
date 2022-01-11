@@ -5,8 +5,9 @@
 .main-body{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .child{
     margin:40px;
@@ -18,22 +19,43 @@
     width: 500px;
     font-size: 1em;
 }
+.url-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 label{
-    margin-bottom:30px;
+    /* margin-bottom:30px; */
     font-size: 2em;
     text-align: left;
     
 }
 input[type=text]{
     width: 100%;
+    padding: 5px 5px 5px 5px;
 }
 input[type=submit]{
-    padding: 5px 5px 5px 5px;
+    padding: 10px 10px 10px 10px;
     border-radius: 10%;
+    border: 5px;
+    background-color: rgb(163, 163, 163);
+    align-self: center;
+    font-weight: bold;
+    background-color: rgb(47, 149, 218);
 }
 
 input{
     margin-top:10px;
     font-size:20px;
+    
+}
+.child2{
+    margin-bottom: 20px;
+}
+.child2 a{
+    margin-top: 10px;
     margin-bottom: 10px;
+}
+span{
+    font-size: 1.3em;
 }
