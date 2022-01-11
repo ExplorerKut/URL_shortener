@@ -4,17 +4,16 @@ from hashids import Hashids
 from flask_sqlalchemy import SQLAlchemy
 import os
 from boto.s3.connection import S3Connection
-s3 = S3Connection(os.environ['db_url'], os.environ['secret_key'])
+# s3 = S3Connection(os.environ['db_url'], os.environ['secret_key'])
 
 app = Flask(__name__)
-app.config['SECRET_KEY']=s3[1]
+app.config['SECRET_KEY']=os.environ.get('SECRET_KEY')
 hashids= Hashids(min_length=4, salt=app.config['SECRET_KEY'])
-app.config['SQLALCHEMY_DATABASE_URI']=s3[0]
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('db_URI')
 db=SQLAlchemy(app)
-
 class Urls(db.Model):
     id=db.Column(db.Integer,primary_key=True)
-    original_url=db.Column(db.String(150),nullable=False)
+    original_url=db.Column(db.String(500),nullable=False)
 
     def __init__(self,id, original_url):
         self.id=id
