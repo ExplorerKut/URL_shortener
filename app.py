@@ -7,9 +7,12 @@ from boto.s3.connection import S3Connection
 # s3 = S3Connection(os.environ['db_url'], os.environ['secret_key'])
 
 app = Flask(__name__)
-app.config['SECRET_KEY']=os.environ.get('SECRET_KEY')
+# app.config['SECRET_KEY']=os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY']='my secret key123'
 hashids= Hashids(min_length=4, salt=app.config['SECRET_KEY'])
-app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('db_URI')
+# app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('db_URI')
+app.config['SQLALCHEMY_DATABASE_URI']='postgresql://budomjszekyhpb:df01c34a0fb28e347b4494a3b037f4128cc7099d11845cf7148698c33017c697@ec2-3-225-41-234.compute-1.amazonaws.com:5432/d2tgpq4gdhmn9m'
+
 db=SQLAlchemy(app)
 class Urls(db.Model):
     id=db.Column(db.Integer,primary_key=True)
