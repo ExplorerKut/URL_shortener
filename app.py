@@ -3,18 +3,17 @@ import sqlite3
 from hashids import Hashids
 from flask_sqlalchemy import SQLAlchemy
 import os
-from boto.s3.connection import S3Connection
+
 
 
 app = Flask(__name__)
-# app.config['SECRET_KEY']=os.environ.get('SECRET_KEY')
-# app.config['SECRET_KEY']='my secret key123'
-# s3 = S3Connection(os.environ['DATABASE_URL'], os.environ['SECRET_KEY'])
+os.environ.get('DATABASE_URL')
 app.config['SECRET_KEY']=os.environ.get('SECRET_KEY')
 hashids= Hashids(min_length=4, salt=app.config['SECRET_KEY'])
-# app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('db_URI')
-app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL')
-# print(s3['DATABASE_URL'])
+
+app.config['SQLALCHEMY_DATABASE_URI']=os.environ.get('DATABASE_URL').replace("postgres://", "postgresql://", 1)
+
+
 db=SQLAlchemy(app)
 class Urls(db.Model):
     id=db.Column(db.Integer,primary_key=True)
